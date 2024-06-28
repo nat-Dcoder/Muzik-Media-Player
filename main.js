@@ -58,7 +58,7 @@ $(async () => {
         $('audio').append(`<source src= ${trackData.external_urls.spotify} type="audio/mpeg">`);
         
         $(".fa-play").on('click', function() {
-        $('audio')[0].play(); // Play audio
+        //$('audio')[0].play(); // Play audio
         });
     }
     

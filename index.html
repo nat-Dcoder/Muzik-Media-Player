@@ -5,15 +5,14 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <meta http-equiv="pragma" content="no-cache">
-<<<<<<< HEAD
-    
-=======
->>>>>>> 86c6a404aba2dca51380d065e556a1a6e4bb83f3
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="all.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Document</title>
     <style>
+        :root{
+            --hover-bg-color: #362c2c7c;
+        }
         *{
             margin: 0;
             padding: 0;
@@ -75,10 +74,9 @@
         }
         .controls-wrapper{
             position: fixed;
-            width: 100vw;
+            width: calc(100vw - 18vw);
             bottom: 0;
-            right: 0;
-            left: 0;
+            right: -5px;
             margin: 0 5px;
             background: #08080dcf;
             overflow: hidden;
@@ -121,7 +119,7 @@
             padding: 10px;
         }
         .fa:hover{
-             background: #362c2c7c;
+             background: var(--hover-bg-color);
              cursor: pointer;
         }
         .progress{
@@ -146,20 +144,33 @@
             color: #FFFFFF;
             margin-top: 35px;
         }
-
-        .fa-play{
-            padding: 0;
+        .play{
             width: 30px;
             height: 30px;
-            font-size: 5px;
             outline: 2px solid #FFFFFF;
+             border-radius: 50%;
+            box-shadow: 0 0 0 4px #e78267;
+            padding-left: 3px;
+        }
+        .play:hover{
+            background: var(--hover-bg-color);
+        }
+        .fa-play:hover{
             border-radius: 100px;
+        }
+
+        .fa-bars{
+            background: var(--hover-bg-color);
+        }
+        .fa-bars:hover{
+            opacity: .5;
         }
         .fa-bell{
             font-size: 15px;
         }
         .fa-user-circle{
             font-size: 20px;
+             border-radius: 50%;
         }
         .fa-user-circle:hover{
             background: transparent;
@@ -340,7 +351,8 @@
             width: calc(100vw - 18vw);
             height: 100vh;
             margin-left: 18vw;
-            background: #000000eb;
+            background: #f00505eb;
+
         }
         audio{
             position: fixed;
@@ -405,8 +417,7 @@
             <!-- Header Content-->
             <div class="header">
                 <div class="back">
-                    <button type="button"><i class="fa fa-caret-left"></i></button>
-                    <button type="button"><i class="fa fa-caret-right"></i></button>
+                    <button type="button"><i class="fa fa-bars"></i></button>
                      <div class="logo-wrapper">
                         <img src="img/myLogoMaker_25-06-2024_40252_pm.png" style="width: 100%; height: 100%;" alt="">
                     </div>
@@ -423,39 +434,12 @@
                 </div>
             </div>
             <div class="title-wrapper">
-                <div class="sidebar">
-                    <div class="billboard">
-                        <div class="billboard-title">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
-                                <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
-                                <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
-                                <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1"/>
-                            </svg>                  
-                            <h3>BillBoard - Top 20 Songs</h3>
-                        </div>
-                        
-                    </div>
-                    <div class="playlist">
-                        <div class="playlist-title">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                                <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2"/>
-                                <path fill-rule="evenodd" d="M12 3v10h-1V3z"/>
-                                <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1z"/>
-                                <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5"/>
-                            </svg>
-                            <h3>Muzik Selected PlayList</h3>
-                        </div>
-                        
-                    </div>
-                   
-                </div>
             </div>
             <!--Header Content End-->
 
             <!--Main Content-->
             <div class="main-content">
-                <audio controls>
-                </audio>
+                <audio id="audio" src="assets/media/music/Tyla-To-Last-(JustNaija.com).mp3"></audio>
             </div>
             <!-- Main Content End-->
             <div class="controls-wrapper">
@@ -471,7 +455,10 @@
                             <i class="fa fa-heart hover"></i>   
                             <i class="fa fa-shuffle hover"></i>
                             <i class="fa fa-backward-step hover"></i>
-                            <i class="fa fa-play"></i>
+                            <button class="play" data-playing="false" role="switch" aria-checked="false">
+                                <i class="fa fa-play"></i>
+                            </button>
+
                             <i class="fa fa-step-forward hover"></i>
                             <i class="fa fa-repeat hover"></i>
                             <i class="fa fa-share hover"></i>
@@ -497,5 +484,6 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="main.js"></script>
+    <script src="audioPlayer.js"></script>
 </body>
 </html>
