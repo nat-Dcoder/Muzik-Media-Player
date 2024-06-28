@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="all.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Document</title>
     <style>
         *{
@@ -44,7 +45,7 @@
         .icons{
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 10px;
         }
         .icons2{
             display: flex;
@@ -111,7 +112,6 @@
         
         .fa{
             padding: 10px;
-            font-weight: 600;
         }
         .fa:hover{
              background: #362c2c7c;
@@ -141,10 +141,11 @@
         }
 
         .fa-play{
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            font-size: 5px;
             outline: 2px solid #FFFFFF;
-            padding: 10px;
-            width: 40px;
-            height: 40px;
             border-radius: 100px;
         }
         .fa-bell{
@@ -248,7 +249,7 @@
             flex-wrap: nowrap;
             margin-right: 10px;
             flex-basis: 30%;
-            gap: 15px;
+            gap: 8px;
         }
         .sidebar{
             position: fixed;
@@ -409,7 +410,7 @@
                             <label for="search"><i class="fa fa-search"></i><input type="search" name="search" id="search" placeholder="Search Artist, Music, Videos, Podcast and more..."></label>
                         </form>
                     </div>
-                    <i class="fa fa-bell"></i>
+                    <i class="fa fa-bell hover"></i>
                     <i class="fa fa-user-circle"></i>
                 </div>
             </div>
@@ -446,7 +447,6 @@
             <!--Main Content-->
             <div class="main-content">
                 <audio controls>
-                    <source media="" srcset="">
                 </audio>
             </div>
             <!-- Main Content End-->
@@ -488,6 +488,6 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="index.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
