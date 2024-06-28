@@ -1,17 +1,26 @@
 $(async () => {
-
-
+    $('.control-menu').css('display', 'none')
+    $('.range-control').css('display', 'none');
     $('audio').removeAttr('controls');
     $('.controls-wrapper').css('visibility', 'visible');
+    $('.fa-ellipsis-v').on('click', () => {
+        $('.control-menu').css('right', 0)
+        $('.control-menu').slideToggle();
+    })
+    $('.fa.fa-heart').on('click', () => {
+        $('.fa.fa-heart').css('color', 'red')
+    })
+    $('.main-content').on('click', () => {
+        $('.control-menu').hide();
+    })
     
+    //========== Volume slider ================
     const tooltip = $('output[for="volume-slider"]');
 
     $('#volume-slider').on('input', function () {
-       
         const val = $(this).val();
-        console.log(val)
+        
         tooltip.text(val);
-       
         // Calculate the position of the tooltip
         const trans = "-" + val + "%";
         const width = $(this).outerWidth();
@@ -20,6 +29,7 @@ $(async () => {
             transform: `translate(${trans})`
         });
     });
+    //========= Volume slider end ============
 
     const client_id = '618d7377fa17420387ffc9ec9e12d7e4';
     const client_secret = '1d30572400754b87a03a8816a827e767';

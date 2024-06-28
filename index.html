@@ -76,8 +76,7 @@
             position: fixed;
             width: calc(100vw - 18vw);
             bottom: 0;
-            right: -5px;
-            margin: 0 5px;
+            right: 0px;
             background: #08080dcf;
             overflow: hidden;
             visibility: hidden;
@@ -103,9 +102,9 @@
         .controls{
             width: 100%;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            gap: 30px;
             color: #FFFFFF;
         }
         .controls .fa{
@@ -180,21 +179,18 @@
             background: transparent;
             cursor: text;
         }
+
+        .fa.fa-dashboard{
+            font-size: 10px;
+            padding: 0;
+        }
         .main-controls{
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             align-items: center;
             flex-shrink: 3;
-        }
-        .sub-controls{
-            position: relative;
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            padding-right: 18px;
-        }
-     
+        } 
         .menu{
             width: 4px;
             height: 4px;
@@ -287,7 +283,16 @@
             align-items: center;
             justify-content: center;
         }
-      
+        .sub-controls{
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            background: var(--hover-bg-color);
+            border-radius: 3px;
+            box-shadow: 0 0 0 4px rgba(225, 219, 219, 0.034);
+            z-index: 900;
+        }
         .billboard{   
             height: 50%;
             border-bottom: 1px solid #ffffff42;
@@ -300,7 +305,11 @@
             justify-content: space-evenly;
             border-bottom: 1px solid #ffffff42;
         }
-
+        progress:hover{
+            box-shadow: 0 0 0 4px rgba(225, 219, 219, 0.316);
+            border-radius: 2px;   
+            margin: 0 2px;
+        }
         .playlist-title{
             display: flex;
             align-items: center;
@@ -351,8 +360,8 @@
             width: calc(100vw - 18vw);
             height: 100vh;
             margin-left: 18vw;
-            background: #f00505eb;
-
+            background: #180101eb;
+            z-index: 1;
         }
         audio{
             position: fixed;
@@ -404,10 +413,87 @@
             align-items: center;
         }
         .spacer{
-            flex-basis: 30%;
+            flex-basis: 110px;
             visibility: hidden;
         }
+        .control-menu{
+            position: absolute;
+            top: 200px;
+            z-index: 9999;
+            width: 168px;
+            font-size: 12px;
+            background: #0b0b0bf5;;
+            border-radius: 5px;
+            display: none;
+        }
+        .control-menu ul li:last-child{
+            border: 0;
+        }
+        .control-menu li{
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-bottom: 1px solid #eeeeee25;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .control-menu li:hover{
+            background: var(--hover-bg-color);
+            margin:0 2px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        li .fa{
+            margin-right: 10px;
+            padding: 0;
+        }
+        @media  (max-width:798px) {
+            .spacer{
+                display: none;
+            }
+            .fa.fa-bell{
+                font-size: 12px;
+            }
+            .controls{
+                flex-direction: column;
+                justify-content: center;
+            }
+            .main-controls .fa{
+                font-size: 15px;
+            }
+            .progress{
+                width: 90%;
+            }
+            .sub-controls{
+                width: 80%;
+                align-items: center;
+                justify-content: space-evenly;
+                padding: 0;
+                background: var(--hover-bg-color);
+                border-radius: 3px;
+                box-shadow: 0 0 0 4px rgba(225, 219, 219, 0.034);
+            }
+            .volume{
+                display: none;
+            }
+            .sub-controls .fa{
+                font-size: 15px;
+            }
 
+            .fa.fa-play{
+                font-size: 15px;
+            }
+            .volume-wrapper{
+               
+                flex-basis: 1px;
+            }
+
+            progress:hover{
+                box-shadow: 0 0 0 4px rgba(225, 219, 219, 0.316);
+                border-radius: 2px;   
+                margin: 0 2px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -440,11 +526,19 @@
             <!--Main Content-->
             <div class="main-content">
                 <audio id="audio" src="assets/media/music/Tyla-To-Last-(JustNaija.com).mp3"></audio>
-            </div>
-            <!-- Main Content End-->
-            <div class="controls-wrapper">
+                <div class="control-menu">
+                            <ul>
+                                <li class="listItem">Equalizer</li>
+                                <li class="listItem"><i class="fa fa-dashboard"></i> Speed</li>
+                                <li class="listItem"><i class="fa fa-video-camera"></i> Video settings</li>
+                                <li class="listItem"><i class="fa fa-house-signal"></i> Cast to device</li>
+                                <li class="listItem"><i class="fa fa-edit"></i> Video & Audio Edit</li>
+                                <li class="listItem"><i class="fa fa-info-circle"></i> Properties</li>
+                            </ul>
+                        </div>
+                <div class="controls-wrapper">
                 <div class="player-controls">
-                     <div class="progress">
+                    <div class="progress">
                         <span class="timer">00:00</span>
                         <progress id="file" value="1" max="100"></progress>
                         <span class="timer">00:00</span>
@@ -471,7 +565,6 @@
                                     <output for="volume-slider"></output>
                                     <input type="range" id="volume-slider" min="0" max="100" step="1">
                                 </div>
-                                
                             </div>
                             <i class="fa fa-maximize hover"></i>
                             <i class="fa fa-minimize hover"></i>
@@ -479,7 +572,10 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
+            <!-- Main Content End-->
+            
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
