@@ -24,21 +24,15 @@
         }
         .container{
             position: relative;
-            width: 100%;
             height: 100vh;
             background: #e8e5e57d;
             padding: 0px;
-            overflow: hidden;
-        }
-        .header{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #f0dcdc1c;
         }
         .wrapper{
+            display: grid;
+            grid-template-columns: 18vw 1fr 18vw;
+            grid-template-rows: 70px 1fr 100px;
             position: relative;
-            width: 100%;
             height: 100%;
             background-image: url('img/R.jpg');
             background-repeat: no-repeat;
@@ -47,47 +41,94 @@
             box-shadow: 0 0 10px #020202;
             overflow: hidden;
         }
-
-        .icons{
+        /************ Header Styles **************/
+        .header{
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-column: span 3;
+            border-bottom: 1px solid #f0dcdc1c;
+        }
+        
+        .logo-wrapper{
+            width: 480px;
+            height: 70px;
+            margin-left: 10px;
+        }
+        .logo-wrapper img{
+            object-fit: cover;
+        }
+        .menu-icon-wrapper{
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            align-items: center;
+            grid-column: span 1;
+            padding-left: 5px;
         }
-        .icons2{
+        .menu-icon-wrapper button{
+            width: 40px;
+            height: 40px;
+        }
+        .menu-icon-wrapper button .fa.fa-house{
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-size: 20px;
         }
+        /************ Header Styles End *************/
 
-        .title{
-            text-align: center;
-        }
-        .title span{
-            font-family:'Courier New', Courier, monospace;
-            font-size: .9rem;
-            font-weight: 400;
-        }
-        h1{
-            font-weight: 500;
-            font-size: 1.2rem;
-            font-family:'Courier New', Courier, monospace;
-        }
+        /************ Audio Controls Styles ********/
         .controls-wrapper{
-            position: fixed;
-            width: calc(100vw - 18vw);
-            bottom: 0;
-            right: 0px;
             background: #08080dcf;
-            overflow: hidden;
-            visibility: hidden;
+            grid-column: span 3;
+            grid-row-start: 3;
+            border-top: 1px solid #ffffff13;
         }
         .player-controls{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr 4fr 1fr;
+            grid-template-rows: 1fr 1fr;
             padding:0;
             padding: 14px 0;
             z-index: 1;
+        }
+        .controls{
+            grid-column:span 3;
+            grid-row-start: 2;
+            display: grid;
+            grid-template-columns: 1fr 3fr 150px;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            color: #FFFFFF;
+        }
+        .main-controls{
+            grid-column-start: 2;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+         .sub-controls{
+            grid-column-start: 3;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 3px;
+            z-index: 900;
+            margin-right: 10px;
+        }
+        .progress{
+            grid-column-start: 2;
+            grid-row-start: 1;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            padding:0;
+            margin: 0 0 20px 0;
+            gap: 5px;
         }
         .timer{
             display: flex;
@@ -99,43 +140,13 @@
             text-shadow: 1px 1px 0px black;
              flex: 5;
         }
-        .controls{
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 30px;
-            color: #FFFFFF;
-        }
         .controls .fa{
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 1rem;
         }
-        
-        .fa{
-            padding: 10px;
-        }
-        .fa:hover{
-             background: var(--hover-bg-color);
-             cursor: pointer;
-        }
-        .progress{
-            margin-top: 20px;
-            width: 70%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5px;
-            padding:0;
-            margin: 0 0 20px 0;
-            gap: 5px;
-        }
-        progress{
-            width: 100%;
-            height: 8px;
-        }
+
         #volume-slider {
           width: 290px; /* Adjust width as needed */
         }
@@ -143,6 +154,24 @@
             color: #FFFFFF;
             margin-top: 35px;
         }
+
+        .range-container{
+            display: none;
+            transition: all .10s ease-in;
+        }
+        /********** Audio Controls Style End **********/ 
+        .fa{
+            padding: 10px;
+        }
+        .fa:hover{
+             background: var(--hover-bg-color);
+             cursor: pointer;
+        }
+        progress{
+            width: 100%;
+            height: 8px;
+        }
+        
         .play{
             width: 30px;
             height: 30px;
@@ -184,45 +213,9 @@
             font-size: 10px;
             padding: 0;
         }
-        .main-controls{
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            align-items: center;
-            flex-shrink: 3;
-        } 
-        .menu{
-            width: 4px;
-            height: 4px;
-            background: #FFFFFF;
-            border-radius: 50px;
-            margin-top: 17px;
-        }
-        .menu::before, .menu::after{
-            content: "";
-            width: 4px;
-            height: 4px;
-            background: #fff;
-            border-radius: 50px;
-            display: inline-block;
-            position: relative;
-        }
-        .menu::before{
-            left: 0px;
-            top: -18px;
-        }
-        .menu::after{
-            right: 0;
-            top: -26px;
-            margin-right: 12px;
-        }
-
         .hover:hover{
             background: rgba(77, 58, 58, 0.55);
             border-radius: 5px;
-        }
-        .back{
-            padding-left: 5px;
         }
         button{
             border: 0;
@@ -236,24 +229,6 @@
             height: 100%;
             margin: 0;
             color: #FFFFFF;
-        }
-        .logo-wrapper{
-            width: 110px;
-            height: 50px;
-            margin-left: 10px;
-        }
-        .back{
-            display: flex;
-            align-items: center;
-        }
-        .back button .fa{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-        }
-        .logo-wrapper img{
-            object-fit: cover;
         }
         .profile{
             color: #FFFFFF;
@@ -282,16 +257,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .sub-controls{
-            position: relative;
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            background: var(--hover-bg-color);
-            border-radius: 3px;
-            box-shadow: 0 0 0 4px rgba(225, 219, 219, 0.034);
-            z-index: 900;
         }
         .billboard{   
             height: 50%;
@@ -329,14 +294,10 @@
         }
 
         .search{
-            display: flex;
-            align-items: center;
-            width: 80%;
-            height: 30px;
+            
         }
         form{
-            width: 100%;
-            height: 100%;
+           
         }
 
         .search label{
@@ -357,11 +318,7 @@
         }
         .main-content{
             position: relative;
-            width: calc(100vw - 18vw);
-            height: 100vh;
-            margin-left: 18vw;
             background: #180101eb;
-            z-index: 1;
         }
         audio{
             position: fixed;
@@ -391,13 +348,9 @@
         }
 
         output {
-            position: absolute;
             display: flex;
-            visibility: hidden;
             align-items: center;
             justify-content: center;
-            top: -25px;
-            background-color: #333;
             color: #fff;
             width: 20px;
             height: 15px;
@@ -405,16 +358,25 @@
             padding: 8px;
             border-radius: 4px;
             font-size: 10px;
+            margin-left: 8px;
             pointer-events: none; /* Prevent interaction with the tooltip */
         }
         .range-control{
-            position: relative;
+            position: absolute;
+            top: -50px;
+            right: -129px;
+            background: rgba(0, 0, 0, 0.968);
+            width: 200px;
+            height: 45px;
+            border-radius: 5px;
+            padding: 0 10px;
             display: flex;
             align-items: center;
+
         }
         .spacer{
             flex-basis: 110px;
-            visibility: hidden;
+            visibility: visible;
         }
         .control-menu{
             position: absolute;
@@ -448,6 +410,24 @@
             padding: 0;
         }
         @media  (max-width:798px) {
+            .container{
+                min-width: 450px;
+                min-height: 428px;
+            }
+            body,.wrapper, html{
+                min-width: 450px;
+                min-height: 428px;
+            }
+            .controls-wrapper{
+
+            }
+            .fa.fa-shuffle, 
+            .fa.fa-heart, 
+            .fa.fa-share, 
+            .fa.fa-repeat
+            {
+                display: none;
+            }
             .spacer{
                 display: none;
             }
@@ -455,7 +435,6 @@
                 font-size: 12px;
             }
             .controls{
-                flex-direction: column;
                 justify-content: center;
             }
             .main-controls .fa{
@@ -501,9 +480,9 @@
         
         <div class="wrapper">
             <!-- Header Content-->
-            <div class="header">
-                <div class="back">
-                    <button type="button"><i class="fa fa-bars"></i></button>
+            <header class="header">
+                <div class="menu-icon-wrapper">
+                    <button type="button"><i class="fa fa-house"></i></button>
                      <div class="logo-wrapper">
                         <img src="img/myLogoMaker_25-06-2024_40252_pm.png" style="width: 100%; height: 100%;" alt="">
                     </div>
@@ -516,35 +495,38 @@
                         </form>
                     </div>
                     <i class="fa fa-bell hover"></i>
-                    <i class="fa fa-user-circle"></i>
+                    <div class="user-">
+                        <span class="pp">N</span>
+                    </div>
                 </div>
-            </div>
-            <div class="title-wrapper">
-            </div>
+            </header>
             <!--Header Content End-->
 
             <!--Main Content-->
-            <div class="main-content">
+            <main class="main-content">
                 <audio id="audio" src="assets/media/music/Tyla-To-Last-(JustNaija.com).mp3"></audio>
-                <div class="control-menu">
-                            <ul>
-                                <li class="listItem">Equalizer</li>
-                                <li class="listItem"><i class="fa fa-dashboard"></i> Speed</li>
-                                <li class="listItem"><i class="fa fa-video-camera"></i> Video settings</li>
-                                <li class="listItem"><i class="fa fa-house-signal"></i> Cast to device</li>
-                                <li class="listItem"><i class="fa fa-edit"></i> Video & Audio Edit</li>
-                                <li class="listItem"><i class="fa fa-info-circle"></i> Properties</li>
-                            </ul>
-                        </div>
-                <div class="controls-wrapper">
+            </main>
+            <!-- Main Content End-->
+            <section class="control-menu">
+                <ul>
+                    <li class="listItem">Equalizer</li>
+                    <li class="listItem"><i class="fa fa-dashboard"></i> Speed</li>
+                    <li class="listItem"><i class="fa fa-video-camera"></i> Video settings</li>
+                    <li class="listItem"><i class="fa fa-house-signal"></i> Cast to device</li>
+                    <li class="listItem"><i class="fa fa-edit"></i> Video & Audio Edit</li>
+                    <li class="listItem"><i class="fa fa-info-circle"></i> Properties</li>
+                </ul>
+            </section>
+            <!-- Audio Control Section -->
+            <section class="controls-wrapper">
                 <div class="player-controls">
                     <div class="progress">
                         <span class="timer">00:00</span>
                         <progress id="file" value="1" max="100"></progress>
                         <span class="timer">00:00</span>
                     </div>
+                    <!-- Audio Control -->
                     <div class="controls">
-                        <div class="spacer">.</div>
                         <div class="main-controls">
                             <i class="fa fa-heart hover"></i>   
                             <i class="fa fa-shuffle hover"></i>
@@ -552,19 +534,21 @@
                             <button class="play" data-playing="false" role="switch" aria-checked="false">
                                 <i class="fa fa-play"></i>
                             </button>
-
                             <i class="fa fa-step-forward hover"></i>
                             <i class="fa fa-repeat hover"></i>
                             <i class="fa fa-share hover"></i>
                         </div>   
-                        
                         <div class="sub-controls">
                             <div class="volume-wrapper">
-                                <i class="fa fa-volume-high hover"></i>
-                                <div class="range-control">
-                                    <output for="volume-slider"></output>
-                                    <input type="range" id="volume-slider" min="0" max="100" step="1">
+                                <i class="fa fa-volume-high hover v-icon"></i>
+                                <div class="range-container">
+                                    <div class="range-control">
+                                        <i class="volume-icon fa fa-volume-high"></i>
+                                        <input type="range" id="volume-slider" value="50%" min="0" max="100" step="1">
+                                        <output for="volume-slider"></output>
+                                    </div>
                                 </div>
+                                
                             </div>
                             <i class="fa fa-maximize hover"></i>
                             <i class="fa fa-minimize hover"></i>
@@ -572,10 +556,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
-            </div>
-            <!-- Main Content End-->
-            
+            </section>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
